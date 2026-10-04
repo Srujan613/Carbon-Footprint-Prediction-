@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Analyze Your Footprint — CarbonSense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-pulse"></span> CarbonSense</a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="models.html">Models</a></li>
+    <li><a href="predict.html" style="color:var(--text-primary)">Analyze</a></li>
+    <li><a href="predict.html" class="nav-cta">Get Started →</a></li>
+  </ul>
+</nav>
+
+<!-- ══ FORM ══ -->
+<div class="form-bg" id="predict">
+  <div class="wrap">
+    <div class="sec">
+      <p class="sec-eyebrow">Carbon Analysis</p>
+      <h2 class="sec-title" style="margin-bottom:8px;">Tell us about your lifestyle</h2>
+      <p class="sec-sub">Your inputs remain private. The live estimate updates as you fill each section.</p>
+
+      <div class="form-layout">
+
+        <!-- Form Card -->
+        <div class="form-card">
+          <div class="form-head">
+            <div class="step-pills">
+              <div class="s-pill active" id="pill-1" style="width:28px;"></div>
+              <div class="s-pill" id="pill-2" style="width:28px;"></div>
+              <div class="s-pill" id="pill-3" style="width:28px;"></div>
+            </div>
+            <div class="form-head-title" id="fstep-title">About You</div>
+            <div class="form-head-sub" id="fstep-sub">Personal habits and dietary preferences</div>
+          </div>
+
+          <div class="form-body">
+
+            <!-- Step 1 -->
+            <div class="fstep active" id="fstep-1">
+              <div class="frow">
+                <div class="fg">
+                  <label>Body Type</label>
+                  <select id="body-type">
+                    <option value="">Select...</option>
+                    <option>obese</option><option>overweight</option>
+                    <option selected>normal</option><option>underweight</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label>Sex</label>
+                  <div class="toggle-group">
+                    <button class="tog-btn active" onclick="setSex(this,'male')">Male</button>
+                    <button class="tog-btn" onclick="setSex(this,'female')">Female</button>
+                  </div>
+                </div>
+              </div>
+              <div class="frow">
+                <div class="fg">
+                  <label>Diet</label>
+                  <select id="diet">
+                    <option value="">Select...</option>
+                    <option selected>omnivore</option><option>pescatarian</option>
+                    <option>vegetarian</option><option>vegan</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label>Social Activity</label>
+                  <select id="social">
+                    <option value="">Select...</option>
+                    <option>never</option><option selected>sometimes</option><option>often</option>
+                  </select>
+                </div>
+              </div>
+              <div class="fg">
+                <div class="range-header">
+                  <span class="range-label-txt">New Clothes per Month</span>
+                  <span class="range-val" id="clothes-val">5 items</span>
+                </div>
+                <input type="range" id="new-clothes" min="0" max="30" value="5"
+                  oninput="rng('new-clothes','clothes-val',v=>v+' items')"/>
+                <div class="range-ends"><span>0</span><span>30</span></div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="fstep" id="fstep-2">
+              <div class="frow">
+                <div class="fg">
+                  <label>Heating Energy Source</label>
+                  <select id="heating">
+                    <option value="">Select...</option>
+                    <option>coal</option><option selected>natural gas</option>
+                    <option>wood</option><option>electricity</option><option>solar</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label>Shower Frequency</label>
+                  <select id="shower">
+                    <option value="">Select...</option>
+                    <option selected>daily</option><option>twice a day</option>
+                    <option>more frequently</option><option>less frequently</option>
+                  </select>
+                </div>
+              </div>
+              <div class="frow">
+                <div class="fg">
+                  <label>Energy Efficiency</label>
+                  <select id="energy-eff">
+                    <option value="">Select...</option>
+                    <option>No</option><option selected>Sometimes</option><option>Yes</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label>Monthly Grocery Bill ($)</label>
+                  <input type="number" id="grocery" placeholder="e.g. 250" value="250" min="0" max="2000"/>
+                </div>
+              </div>
+              <div class="fg full">
+                <label>Cooking With <span style="text-transform:none;color:var(--text-muted);">(select all that apply)</span></label>
+                <div class="chip-group" id="cooking-group">
+                  <label class="chip"><input type="checkbox" value="Stove" checked/> Stove</label>
+                  <label class="chip"><input type="checkbox" value="Oven"/> Oven</label>
+                  <label class="chip"><input type="checkbox" value="Microwave" checked/> Microwave</label>
+                  <label class="chip"><input type="checkbox" value="Grill"/> Grill</label>
+                  <label class="chip"><input type="checkbox" value="Airfryer"/> Airfryer</label>
+                </div>
+              </div>
+              <div class="fg full">
+                <label>Recycling <span style="text-transform:none;color:var(--text-muted);">(select all that apply)</span></label>
+                <div class="chip-group" id="recycling-group">
+                  <label class="chip"><input type="checkbox" value="Paper" checked/> Paper</label>
+                  <label class="chip"><input type="checkbox" value="Plastic" checked/> Plastic</label>
+                  <label class="chip"><input type="checkbox" value="Glass"/> Glass</label>
+                  <label class="chip"><input type="checkbox" value="Metal"/> Metal</label>
+                </div>
+              </div>
+              <div class="frow">
+                <div class="fg">
+                  <label>Waste Bag Size</label>
+                  <select id="waste-size">
+                    <option value="">Select...</option>
+                    <option>small</option><option selected>medium</option>
+                    <option>large</option><option>extra large</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label>Waste Bags per Week</label>
+                  <input type="number" id="waste-count" placeholder="e.g. 3" value="3" min="0" max="20"/>
+                </div>
+              </div>
+              <div class="fg">
+                <div class="range-header">
+                  <span class="range-label-txt">Daily TV / PC Hours</span>
+                  <span class="range-val" id="tv-val">3 hrs</span>
+                </div>
+                <input type="range" id="tv-hours" min="0" max="24" value="3"
+                  oninput="rng('tv-hours','tv-val',v=>v+' hrs')"/>
+                <div class="range-ends"><span>0h</span><span>24h</span></div>
+              </div>
+              <div class="fg">
+                <div class="range-header">
+                  <span class="range-label-txt">Daily Internet Hours</span>
+                  <span class="range-val" id="net-val">4 hrs</span>
+                </div>
+                <input type="range" id="net-hours" min="0" max="24" value="4"
+                  oninput="rng('net-hours','net-val',v=>v+' hrs')"/>
+                <div class="range-ends"><span>0h</span><span>24h</span></div>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="fstep" id="fstep-3">
+              <div class="frow">
+                <div class="fg">
+                  <label>Primary Transport</label>
+                  <select id="transport" onchange="onTransportChange()">
+                    <option value="">Select...</option>
+                    <option>public</option><option selected>private</option>
+                    <option>walk/bicycle</option>
+                  </select>
+                </div>
+                <div class="fg">
+                  <label>Vehicle Type</label>
+                  <select id="vehicle-type" onchange="updateOrb()">
+                    <option value="">Select...</option>
+                    <option selected>petrol</option><option>diesel</option>
+                    <option>hybrid</option><option>lpg</option><option>electric</option>
+                    <option>none</option>
+                  </select>
+                </div>
+              </div>
+              <div class="fg">
+                <div class="range-header">
+                  <span class="range-label-txt">Monthly Driving Distance</span>
+                  <span class="range-val" id="dist-val">1,200 km</span>
+                </div>
+                <input type="range" id="vehicle-dist" min="0" max="8000" step="50" value="1200"
+                  oninput="rng('vehicle-dist','dist-val',v=>parseInt(v).toLocaleString()+' km')"/>
+                <div class="range-ends"><span>0 km</span><span>8,000 km</span></div>
+              </div>
+              <div class="fg">
+                <label>Air Travel Frequency</label>
+                <select id="air-travel">
+                  <option value="">Select...</option>
+                  <option>never</option><option selected>rarely</option>
+                  <option>frequently</option><option>very frequently</option>
+                </select>
+              </div>
+              <div class="step-summary">
+                <p class="step-summary-text">Ready to analyze your footprint using 5 ML models with SHAP explainability.</p>
+                <div class="tags-row">
+                  <span class="tag">Ridge</span>
+                  <span class="tag">Random Forest</span>
+                  <span class="tag">CatBoost</span>
+                  <span class="tag">LightGBM</span>
+                  <span class="tag">XGBoost</span>
+                  <span class="tag">SHAP xAI</span>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /form-body -->
+
+          <div class="form-foot">
+            <button class="btn-back" id="btn-back" onclick="goStep(-1)" style="visibility:hidden;">← Back</button>
+            <span class="step-counter" id="step-ctr">Step 1 of 3</span>
+            <button class="btn-next" id="btn-next" onclick="goStep(1)">Next →</button>
+          </div>
+        </div><!-- /form-card -->
+
+        <!-- ── Gauge Sidebar ── -->
+        <div class="gauge-sidebar">
+          <div class="g-card">
+            <div class="g-title">Live Estimate</div>
+            <div class="orb-wrap">
+              <div class="o-ring"></div>
+              <div class="o-ring"></div>
+              <div class="o-ring"></div>
+              <div class="o-core" id="orb-core">
+                <div class="o-num" id="orb-num">—</div>
+                <div class="o-unit">kg CO₂ /yr</div>
+              </div>
+            </div>
+            <div class="emission-badge" id="emission-badge">Fill in your details</div>
+            <div class="g-breakdown">
+              <div class="g-row">
+                <span class="g-row-lbl">Transport</span>
+                <div class="g-track"><div class="g-fill" id="gf-transport"></div></div>
+                <span class="g-v" id="gv-transport">—</span>
+              </div>
+              <div class="g-row">
+                <span class="g-row-lbl">Home</span>
+                <div class="g-track"><div class="g-fill" id="gf-home"></div></div>
+                <span class="g-v" id="gv-home">—</span>
+              </div>
+              <div class="g-row">
+                <span class="g-row-lbl">Diet</span>
+                <div class="g-track"><div class="g-fill" id="gf-diet"></div></div>
+                <span class="g-v" id="gv-diet">—</span>
+              </div>
+              <div class="g-row">
+                <span class="g-row-lbl">Lifestyle</span>
+                <div class="g-track"><div class="g-fill" id="gf-lifestyle"></div></div>
+                <span class="g-v" id="gv-lifestyle">—</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="g-card">
+            <div class="g-title" style="margin-bottom:14px;">Global Context</div>
+            <div class="ctx-row">
+              <span class="ctx-lbl">1.5°C target</span>
+              <span class="ctx-val" style="color:var(--accent-teal)">2,000 kg</span>
+            </div>
+            <div class="ctx-row">
+              <span class="ctx-lbl">World average</span>
+              <span class="ctx-val" style="color:var(--text-primary)">4,700 kg</span>
+            </div>
+            <div class="ctx-row">
+              <span class="ctx-lbl">India average</span>
+              <span class="ctx-val" style="color:var(--text-primary)">1,900 kg</span>
+            </div>
+            <div class="ctx-row">
+              <span class="ctx-lbl">US average</span>
+              <span class="ctx-val" style="color:var(--accent-coral)">14,000 kg</span>
+            </div>
+          </div>
+        </div><!-- /gauge-sidebar -->
+
+      </div><!-- /form-layout -->
+    </div>
+  </div>
+</div>
+
+<!-- ══ RESULTS ══ -->
+<div id="results">
+  <div class="results-bg">
+    <div class="wrap">
+      <div class="sec">
+        <p class="sec-eyebrow">Analysis Complete</p>
+        <h2 class="sec-title">Your Carbon Footprint</h2>
+
+        <div class="results-grid">
+          <!-- Left Column -->
+          <div>
+            <!-- Score Hero -->
+            <div class="r-card" style="margin-bottom:22px;">
+              <p class="r-card-title">Predicted Annual Emission</p>
+              <div class="score-hero">
+                <div>
+                  <p class="score-label" id="score-label">Ensemble Estimate</p>
+                  <div class="score-num" id="res-score">—</div>
+                  <div class="score-unit">kg CO₂ equivalent / year</div>
+                </div>
+                <div class="score-context">
+                  <div class="score-class" id="res-class">—</div>
+                  <div class="score-ctx-text" id="res-context">Run the calculator to see your result.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SHAP -->
+            <div class="r-card">
+              <p class="r-card-title">SHAP Feature Importance</p>
+              <div id="shap-items">
+                <p style="font-size:.8rem;color:var(--text-muted);">Run the calculator to see your SHAP breakdown.</p>
+              </div>
+              <div class="shap-legend">
+                <div class="shap-leg-item"><div class="shap-leg-dot" style="background:var(--accent-coral)"></div> Increases emission</div>
+                <div class="shap-leg-item"><div class="shap-leg-dot" style="background:var(--accent-teal)"></div> Reduces emission</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div style="display:flex;flex-direction:column;gap:22px;">
+            <!-- Model Predictions -->
+            <div class="r-card">
+              <p class="r-card-title">Model Predictions</p>
+              <div id="mpred-container">
+                <p style="font-size:.8rem;color:var(--text-muted);">Run the calculator to see live model predictions.</p>
+              </div>
+            </div>
+
+
+            <!-- Lifestyle Archetype -->
+            <div class="r-card">
+              <p class="r-card-title">Lifestyle Archetype</p>
+              <div class="score-class" id="archetype-label" style="margin-bottom:6px;">—</div>
+              <p style="font-size:.8rem;color:var(--text-muted);" id="archetype-note">Run the calculator to see your archetype.</p>
+            </div>
+
+            <!-- Percentile -->
+            <div class="r-card" style="text-align:center;">
+              <p class="r-card-title" style="text-align:left;">Dataset Percentile</p>
+              <div class="pct-num" id="pct-num">—</div>
+              <p style="font-size:.82rem;color:var(--text-secondary);" id="pct-desc">Run the calculator to see where you land.</p>
+              <div class="pct-bar-track">
+                <div class="pct-bar-fill" id="pct-bar" style="width:0%"></div>
+              </div>
+              <div class="pct-ends">
+                <span class="pct-end">Low ← </span>
+                <span class="pct-end">→ High</span>
+              </div>
+            </div>
+          </div>
+        </div><!-- /results-grid -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RECOMMENDATIONS ── -->
+  <div class="rec-bg" style="border-top:1px solid var(--border);">
+    <div class="wrap">
+      <div class="sec">
+        <p class="sec-eyebrow">Personalized Recommendations</p>
+        <h2 class="sec-title">Your reduction roadmap</h2>
+        <p class="sec-sub">Ranked by potential CO₂ saving, derived directly from your SHAP importance scores.</p>
+        <div class="rec-grid" id="rec-grid">
+          <p style="font-size:.85rem;color:var(--text-muted);">Run the calculator to get your personalized roadmap.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /results -->
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-logo"><span class="logo-pulse"></span> CarbonSense</div>
+  <p class="foot-text">ML-powered carbon footprint analysis with explainable AI (SHAP) · 10,000 records · 19 lifestyle features</p>
+  <div class="foot-badges">
+    <span class="foot-badge">Ridge Regression</span>
+    <span class="foot-badge">Random Forest</span>
+    <span class="foot-badge">CatBoost</span>
+    <span class="foot-badge">LightGBM</span>
+    <span class="foot-badge">XGBoost</span>
+    <span class="foot-badge">Stacking Ensemble</span>
+    <span class="foot-badge">SHAP xAI</span>
+    <span class="foot-badge">KMeans Archetypes</span>
+  </div>
+</footer>
+<!-- Uncomment and set to your machine's LAN IP if testing from a phone/another
+     device on the same network. Left unset, main.js defaults to http://localhost:5000. -->
+<!-- <script>window.CARBONSENSE_API_URL = 'http://192.168.29.138:5000';</script> -->
+<script src="js/main.js"></script>
+</body>
+</html>

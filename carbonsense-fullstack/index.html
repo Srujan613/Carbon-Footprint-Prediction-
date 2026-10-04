@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CarbonSense — Carbon Footprint Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-pulse"></span> CarbonSense</a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="models.html">Models</a></li>
+    <li><a href="predict.html">Analyze</a></li>
+    <li><a href="predict.html" class="nav-cta">Get Started →</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<div class="hero" id="home">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-right"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Carbon Footprint Calculator</p>
+    <h1 class="hero-headline">
+      Predict. Understand.<br><span class="hl">Reduce.</span>
+    </h1>
+    <p class="hero-body">
+      Answer a few quick questions about your daily habits and get your estimated annual carbon footprint in seconds — plus a personalized roadmap to help bring it down.
+    </p>
+    <div class="hero-ctas">
+      <a href="predict.html" class="btn-primary">Calculate My Footprint ↓</a>
+      <a href="how-it-works.html" class="btn-ghost">How it works</a>
+    </div>
+    <div class="hero-quickfacts">
+      <span class="qf-item"><span class="qf-icon">⏱</span> About 3 minutes</span>
+      <span class="qf-item"><span class="qf-icon">🔒</span> Nothing is stored</span>
+      <span class="qf-item"><span class="qf-icon">📊</span> Instant results</span>
+      <span class="qf-item"><span class="qf-icon">💡</span> Personalized recommendations</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-logo"><span class="logo-pulse"></span> CarbonSense</div>
+  <p class="foot-text">ML-powered carbon footprint analysis with explainable AI (SHAP) · 10,000 records · 19 lifestyle features</p>
+  <div class="foot-badges">
+    <span class="foot-badge">Ridge Regression</span>
+    <span class="foot-badge">Random Forest</span>
+    <span class="foot-badge">CatBoost</span>
+    <span class="foot-badge">LightGBM</span>
+    <span class="foot-badge">XGBoost</span>
+    <span class="foot-badge">SHAP xAI</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Model Architecture — CarbonSense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-pulse"></span> CarbonSense</a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html">How It Works</a></li>
+    <li><a href="models.html" style="color:var(--text-primary)">Models</a></li>
+    <li><a href="predict.html">Analyze</a></li>
+    <li><a href="predict.html" class="nav-cta">Get Started →</a></li>
+  </ul>
+</nav>
+
+<!-- ══ MODELS ══ -->
+<div class="models-bg" id="models">
+  <div class="wrap">
+    <div class="sec">
+      <p class="sec-eyebrow">Model Architecture</p>
+      <h2 class="sec-title">Five models.<br>One robust answer.</h2>
+      <p class="sec-sub">Each algorithm brings different strengths. The ensemble is more accurate and stable than any individual model.</p>
+      <div class="models-grid">
+        <div class="m-card" data-model="ridge">
+          <div class="m-card-icon">📐</div>
+          <div class="m-card-name">Ridge</div>
+          <div class="m-card-type">Linear Regression</div>
+          <div class="m-card-score">—</div>
+          <div class="m-card-score-label">Loading real metrics…</div>
+          <div class="m-card-bar"><div class="m-card-bar-fill" style="width:0%"></div></div>
+        </div>
+        <div class="m-card" data-model="random_forest">
+          <div class="m-card-icon">🌳</div>
+          <div class="m-card-name">Random Forest</div>
+          <div class="m-card-type">Tree Ensemble</div>
+          <div class="m-card-score">—</div>
+          <div class="m-card-score-label">Loading real metrics…</div>
+          <div class="m-card-bar"><div class="m-card-bar-fill" style="width:0%"></div></div>
+        </div>
+        <div class="m-card" data-model="catboost">
+          <div class="m-card-icon">🐱</div>
+          <div class="m-card-name">CatBoost</div>
+          <div class="m-card-type">Gradient Boosting</div>
+          <div class="m-card-score">—</div>
+          <div class="m-card-score-label">Loading real metrics…</div>
+          <div class="m-card-bar"><div class="m-card-bar-fill" style="width:0%"></div></div>
+        </div>
+        <div class="m-card" data-model="lightgbm">
+          <div class="m-card-icon">⚡</div>
+          <div class="m-card-name">LightGBM</div>
+          <div class="m-card-type">Gradient Boosting</div>
+          <div class="m-card-score">—</div>
+          <div class="m-card-score-label">Loading real metrics…</div>
+          <div class="m-card-bar"><div class="m-card-bar-fill" style="width:0%"></div></div>
+        </div>
+        <div class="m-card" data-model="xgboost">
+          <div class="m-card-icon">🚀</div>
+          <div class="m-card-name">XGBoost</div>
+          <div class="m-card-type">Gradient Boosting</div>
+          <div class="m-card-score">—</div>
+          <div class="m-card-score-label">Loading real metrics…</div>
+          <div class="m-card-bar"><div class="m-card-bar-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+      <p class="sec-sub" id="models-metrics-note" style="margin-top:16px;font-size:.8rem;"></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-logo"><span class="logo-pulse"></span> CarbonSense</div>
+  <p class="foot-text">ML-powered carbon footprint analysis with explainable AI (SHAP) · 10,000 records · 19 lifestyle features</p>
+  <div class="foot-badges">
+    <span class="foot-badge">Ridge Regression</span>
+    <span class="foot-badge">Random Forest</span>
+    <span class="foot-badge">CatBoost</span>
+    <span class="foot-badge">LightGBM</span>
+    <span class="foot-badge">XGBoost</span>
+    <span class="foot-badge">SHAP xAI</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How It Works — CarbonSense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo"><span class="logo-pulse"></span> CarbonSense</a>
+  <ul class="nav-links">
+    <li><a href="how-it-works.html" style="color:var(--text-primary)">How It Works</a></li>
+    <li><a href="models.html">Models</a></li>
+    <li><a href="predict.html">Analyze</a></li>
+    <li><a href="predict.html" class="nav-cta">Get Started →</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HOW IT WORKS ══ -->
+<div id="how-it-works" style="background:var(--bg-dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec">
+      <p class="sec-eyebrow">The Process</p>
+      <h2 class="sec-title">From your habits to<br>actionable insight</h2>
+      <p class="sec-sub">Three steps between entering your data and receiving a personalized carbon reduction roadmap.</p>
+      <div class="process-grid">
+        <div class="p-card">
+          <div class="p-icon">📋</div>
+          <h3>Input Lifestyle Data</h3>
+          <p>Answer 19 questions across three domains: personal habits, home energy use, and transportation. Takes under 3 minutes.</p>
+        </div>
+        <div class="p-card">
+          <div class="p-icon">🧠</div>
+          <h3>Ensemble Prediction</h3>
+          <p>Ridge, Random Forest, CatBoost, LightGBM, and XGBoost each produce a prediction. Their ensemble average gives robust, reliable results.</p>
+        </div>
+        <div class="p-card">
+          <div class="p-icon">📊</div>
+          <h3>SHAP Explanation</h3>
+          <p>xAI SHAP values decompose the prediction factor by factor — so you know exactly which behaviors to change for maximum impact.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:64px;">
+        <p class="sec-eyebrow">The Dataset</p>
+        <h2 class="sec-title" style="font-size:clamp(1.4rem,2.4vw,2.1rem);margin-bottom:10px;">Built on real lifestyle data</h2>
+        <p class="sec-sub" style="margin-bottom:0;">Every prediction is grounded in a structured dataset spanning the same three domains you'll fill in below: personal habits, home energy, and transportation.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-label">Training Data</span>
+            <span class="stat-val">10K<span>records</span></span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-label">Lifestyle Features</span>
+            <span class="stat-val">19<span>signals</span></span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-label">Feature Domains</span>
+            <span class="stat-val">3<span>categories</span></span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-label">Explainability</span>
+            <span class="stat-val">xAI<span>SHAP values</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="foot-logo"><span class="logo-pulse"></span> CarbonSense</div>
+  <p class="foot-text">ML-powered carbon footprint analysis with explainable AI (SHAP) · 10,000 records · 19 lifestyle features</p>
+  <div class="foot-badges">
+    <span class="foot-badge">Ridge Regression</span>
+    <span class="foot-badge">Random Forest</span>
+    <span class="foot-badge">CatBoost</span>
+    <span class="foot-badge">LightGBM</span>
+    <span class="foot-badge">XGBoost</span>
+    <span class="foot-badge">SHAP xAI</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
